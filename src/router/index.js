@@ -35,8 +35,6 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   if (requiresAuth) {
-    // このルートはログインされているかどうか認証が必要です。
-    // もしされていないならば、ログインページにリダイレクトします。
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         next()
@@ -48,7 +46,7 @@ router.beforeEach((to, from, next) => {
       }
     })
   } else {
-    next() // next() を常に呼び出すようにしてください!
+    next()
   }
 })
 export default router
