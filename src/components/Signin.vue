@@ -3,10 +3,10 @@
     <h2>Sign in</h2>
     <input type="text" placeholder="Username" v-model="username" />
     <input type="password" placeholder="Password" v-model="password" />
-    <button @click="signIn">Signin</button>
+    <button @click="signIn">Sign in</button>
     <p>
-      You don't have an account?
-      <router-link to="/signup">create account now!!</router-link>
+      You are not a member?
+      <router-link to="/signup">Sign up</router-link>
     </p>
   </div>
 </template>
@@ -29,7 +29,6 @@ export default {
         .signInWithEmailAndPassword(this.username, this.password)
         .then(
           (user) => {
-            alert("Success!");
             this.$router.push("/");
           },
           (err) => {
@@ -40,7 +39,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* 省略 */
-</style>
